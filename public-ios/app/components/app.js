@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Image,
   Text,
   View,
 } from 'react-native';
 import styles from './app.styles';
 
-import FitImage from 'react-native-fit-image';
 import SwiperSelector from './swiper-selector/swiper-selector';
 
 class deepfilters extends Component {
@@ -17,7 +17,7 @@ class deepfilters extends Component {
       text: {
         image: 'You found a ',
         guess: 'dog',
-        stickers: 'Add a sticker',
+        stickers: 'Swipe to add a sticker',
         save: 'Save!',
       },
       mainImageUri: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
@@ -38,7 +38,7 @@ class deepfilters extends Component {
       <View style={styles.container}>
         <View style={styles.viewImageDisplay}>
           <Text style={styles.textHeader}>{`${text.image}${text.guess}`.toUpperCase()}</Text>
-          <FitImage source={{ uri }} style={styles.mainImage} />
+          <Image source={{ uri }} style={styles.mainImage} />
         </View>
         <View style={styles.viewStickerSwiper}>
           <Text style={styles.textHeader}>{text.stickers.toUpperCase()}</Text>

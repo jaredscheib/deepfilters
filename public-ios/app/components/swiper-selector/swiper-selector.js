@@ -11,7 +11,7 @@ class SwiperSelector extends Component {
     return (
       <Swiper showsButtons>
         {this.props.uris.map((uri, i) => (
-          <View key={`view-${i}`} style={{ alignItems: 'center' }}>
+          <View key={`view-${i}`} style={{ alignItems: 'center', }}>
             <Image
               key={`image-${i}`}
               source={{ uri }}

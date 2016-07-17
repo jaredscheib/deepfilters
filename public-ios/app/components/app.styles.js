@@ -4,14 +4,21 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+    borderWidth: 1,
+    borderColor: 'black',
   },
   viewImageDisplay: {
     flex: 5,
     backgroundColor: 'black',
+    borderWidth: 1,
+    borderColor: 'black',
   },
   viewStickerSwiper: {
     flex: 2,
-    backgroundColor: '#a1a1a1',
+    backgroundColor: 'black',
+    borderWidth: 1,
+    borderColor: 'black',
+    position: 'relative',
   },
   viewSaveButton: {
     flex: 1,
@@ -31,5 +38,14 @@ export default StyleSheet.create({
   mainImage: {
     borderWidth: 1,
     borderColor: 'black',
+    flex: 1,
+    width: null,
+    height: null,
+  },
+  secondImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    position: 'absolute',
   },
 });
