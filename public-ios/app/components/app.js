@@ -4,8 +4,9 @@ import {
   Text,
   View,
 } from 'react-native';
-
 import styles from './app.styles';
+
+import SwiperSelector from './swiper-selector/swiper-selector';
 
 class deepfilters extends Component {
   constructor(props) {
@@ -15,6 +16,13 @@ class deepfilters extends Component {
       textImageCarousel: 'Swipe to choose a photo',
       textStickerCarousel: 'Add a sticker',
       textSaveButton: 'Go!',
+      geolocations: [
+        'insitu',
+        'boba',
+        'tony',
+        'sandbox',
+      ],
+      iCurrentGeolocation: 1,
     };
   }
 
@@ -23,6 +31,7 @@ class deepfilters extends Component {
       <View style={styles.container}>
         <View style={styles.viewImageCarousel}>
           <Text style={styles.textHeader}>{this.state.textImageCarousel.toUpperCase()}</Text>
+          <SwiperSelector geolocation={this.state.geolocations[this.state.iCurrentGeolocation]} />
         </View>
         <View style={styles.viewStickerCarousel}>
           <Text style={styles.textHeader}>{this.state.textStickerCarousel.toUpperCase()}</Text>
