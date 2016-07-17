@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
+
+import styles from './styles';
 
 class deepfilters extends Component {
   constructor(props) {
@@ -33,32 +34,5 @@ class deepfilters extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
-  viewImageCarousel: {
-    flex: 3,
-    backgroundColor: 'steelblue',
-  },
-  viewStickerCarousel: {
-    flex: 2,
-    backgroundColor: 'skyblue',
-  },
-  viewSaveButton: {
-    flex: 1,
-    backgroundColor: 'powderblue',
-  },
-  textHeader: {
-    fontSize: 26,
-    textAlign: 'center',
-  },
-  textButton: {
-    fontSize: 22,
-    textAlign: 'center',
-  },
-});
 
 AppRegistry.registerComponent('deepfilters', () => deepfilters);
