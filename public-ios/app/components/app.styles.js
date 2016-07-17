@@ -5,11 +5,11 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
-  viewImageCarousel: {
+  viewImageDisplay: {
     flex: 3,
     backgroundColor: 'steelblue',
   },
-  viewStickerCarousel: {
+  viewStickerSwiper: {
     flex: 2,
     backgroundColor: 'skyblue',
   },

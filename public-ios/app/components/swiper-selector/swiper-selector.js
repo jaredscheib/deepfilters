@@ -11,25 +11,19 @@ class SwiperSelector extends Component {
   render() {
     return (
       <Swiper showsButtons>
-        {[1, 2, 3, 4, 5].map((x, i) => {
-          const host = 'https://s3-us-west-1.amazonaws.com/filtersimg/places';
-          const option = this.props.geolocation;
-          const uri = `${host}/${option}/${option}${i + 1}.jpg`;
-          console.log(uri);
-          return (
-            <View key={`view-${i}`}>
-              <Text key={`text-${i}`}>{uri}</Text>
-              <Image key={`image-${i}`} source={{ uri }} style={{ width: 150, height: 150 }} />
-            </View>
-          );
-        })}
+        {this.props.uris.map((uri, i) => (
+          <View key={`view-${i}`}>
+            <Text key={`text-${i}`}>{uri}</Text>
+            <Image key={`image-${i}`} source={{ uri }} style={{ width: 150, height: 150 }} />
+          </View>
+        ))}
       </Swiper>
     );
   }
 }
 
 SwiperSelector.propTypes = {
-  geolocation: PropTypes.string.isRequired,
+  uris: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default SwiperSelector;

@@ -13,31 +13,35 @@ class deepfilters extends Component {
     super(props);
 
     this.state = {
-      textImageCarousel: 'Swipe to choose a photo',
-      textStickerCarousel: 'Add a sticker',
-      textSaveButton: 'Go!',
-      geolocations: [
-        'insitu',
-        'boba',
-        'tony',
-        'sandbox',
+      text: {
+        image: 'You found a ',
+        guess: 'dog',
+        stickers: 'Add a sticker',
+        save: 'Save!',
+      },
+      urlsStickers: [
+        'corgi_url0',
+        'corgi_url1',
+        'corgi_url2',
+        'corgi_url3',
+        'corgi_url4',
       ],
-      iCurrentGeolocation: 1,
     };
   }
 
   render() {
+    const { text } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.viewImageCarousel}>
-          <Text style={styles.textHeader}>{this.state.textImageCarousel.toUpperCase()}</Text>
-          <SwiperSelector geolocation={this.state.geolocations[this.state.iCurrentGeolocation]} />
+        <View style={styles.viewImageDisplay}>
+          <Text style={styles.textHeader}>{`${text.image}${text.guess}`.toUpperCase()}</Text>
         </View>
-        <View style={styles.viewStickerCarousel}>
-          <Text style={styles.textHeader}>{this.state.textStickerCarousel.toUpperCase()}</Text>
+        <View style={styles.viewStickerSwiper}>
+          <Text style={styles.textHeader}>{text.stickers.toUpperCase()}</Text>
+          <SwiperSelector uris={this.state.urlsStickers} />
         </View>
         <View style={styles.viewSaveButton}>
-          <Text style={styles.textButton}>{this.state.textSaveButton.toUpperCase()}</Text>
+          <Text style={styles.textButton}>{text.save.toUpperCase()}</Text>
         </View>
       </View>
     );
