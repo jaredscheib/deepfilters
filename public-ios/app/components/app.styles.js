@@ -7,11 +7,16 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
   },
-  viewImageDisplay: {
+  viewImagesComposerDisplay: {
     flex: 5,
     backgroundColor: 'black',
     borderWidth: 1,
     borderColor: 'black',
+    // position: 'relative',
+  },
+  viewMainImageDisplay: {
+    flex: 1,
+    zIndex: 0,
     // position: 'relative',
   },
   viewStickerSwiper: {
@@ -53,6 +58,7 @@ export default StyleSheet.create({
     width: 150,
     height: 150,
     position: 'absolute',
+    zIndex: 1,
     left: 40,
     top: 200,
   },

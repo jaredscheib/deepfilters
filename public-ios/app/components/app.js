@@ -84,9 +84,9 @@ class deepfilters extends Component {
     // const uri = !this.state.savedImage ? this.state.mainImageUri : this.state.savedImagePath;
     return (
       <View style={styles.container}>
-        <View style={styles.viewImageDisplay}>
+        <View style={styles.viewImagesComposerDisplay}>
           <Text style={styles.textImageDisplay}>{textImageDisplay.toUpperCase()}</Text>
-          <View ref="image">
+          <View ref="image" style={styles.viewMainImageDisplay}>
             {this.state.savedImage ?
               <Image source={{ uri: currentSticker }} style={styles.stickerImage} />
             : undefined}
