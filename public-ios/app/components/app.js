@@ -9,8 +9,10 @@ import {
 
 import styles from './app.styles';
 
+import MaskedView from 'react-native-masked-view';
 // import ViewSnapshotter from 'react-native-view-snapshot';
 // import RNFS from 'react-native-fs';
+
 import SwiperSelector from './swiper-selector/swiper-selector';
 
 class deepfilters extends Component {
@@ -95,7 +97,6 @@ class deepfilters extends Component {
   render() {
     const textImageDisplay = `${this.state.textImage}${this.state.textGuess}`;
     const uri = this.state.mainImage;
-    console.log('uri!', uri);
     const currentSticker = this.state.stickers[this.state.iSticker].styled;
     // const uri = !this.state.savedImage ? this.state.mainImage : this.state.savedImagePath;
     return (
