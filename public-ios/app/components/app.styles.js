@@ -28,6 +28,7 @@ export default StyleSheet.create({
   },
   viewSaveButton: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: 'red',
   },
   textImageDisplay: {
