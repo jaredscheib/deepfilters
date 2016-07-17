@@ -8,7 +8,9 @@
   "dependencies": {
     "react": "15.2.1",
     "react-native": "0.29.1",
-    "react-native-swiper": "^1.4.6"
+    "react-native-fs": "^1.5.1",
+    "react-native-swiper": "^1.4.6",
+    "react-native-view-snapshot": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^2.9.0",
