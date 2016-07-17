@@ -17,13 +17,13 @@ class deepfilters extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.viewImageCarousel}>
-          <Text>Choose your photo</Text>
+          <Text style={styles.textHeader}>{'Swipe to choose a photo'.toUpperCase()}</Text>
         </View>
         <View style={styles.viewStickerCarousel}>
-          <Text>Sticker time!</Text>
+          <Text style={styles.textHeader}>{'Add a sticker'.toUpperCase()}</Text>
         </View>
         <View style={styles.viewSaveButton}>
-          <Text>temp button text</Text>
+          <Text style={styles.textButton}>{'Go!'.toUpperCase()}</Text>
         </View>
       </View>
     );
@@ -46,6 +46,14 @@ const styles = StyleSheet.create({
   viewSaveButton: {
     flex: 1,
     backgroundColor: 'powderblue',
+  },
+  textHeader: {
+    fontSize: 26,
+    textAlign: 'center',
+  },
+  textButton: {
+    fontSize: 22,
+    textAlign: 'center',
   },
 });
 
