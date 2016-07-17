@@ -20,10 +20,12 @@ class deepfilters extends Component {
     super(props);
 
     this.state = {
+      displayLandingPage: true,
       textImage: 'You found a ',
       textGuess: 'dog',
       textStickers: 'Swipe to add a sticker',
       textSave: 'Save',
+      landingImage: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/filterslogo.png',
       mainImage: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/batman.jpg',
       stickers: [
         {
@@ -55,6 +57,12 @@ class deepfilters extends Component {
 
     this._onPressSave = this._onPressSave.bind(this);
     this._onStickImage = this._onStickImage.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ displayLandingPage: false });
+    }, 3000);
   }
 
   _onStickImage(i) {
@@ -101,27 +109,33 @@ class deepfilters extends Component {
     // const uri = !this.state.savedImage ? this.state.mainImage : this.state.savedImagePath;
     return (
       <View style={styles.container}>
-        <View style={styles.viewImagesComposerDisplay}>
-          <Text style={styles.textImageDisplay}>{textImageDisplay.toUpperCase()}</Text>
-          <View ref="image" style={styles.viewMainImageDisplay}>
-            {this.state.stuckImage ?
-              <Image source={{ uri: currentSticker }} style={styles.stickerImage} />
-            : undefined}
-            <Image source={{ uri }} style={styles.mainImage} />
+        {this.state.displayLandingPage ?
+        (<View style={styles.viewLandingPage}>
+          <Image source={{ uri: this.state.landingImage }} style={styles.imageLanding} />
+        </View>)
+        : (<View style={styles.container}>
+          <View style={styles.viewImagesComposerDisplay}>
+            <Text style={styles.textImageDisplay}>{textImageDisplay.toUpperCase()}</Text>
+            <View ref="image" style={styles.viewMainImageDisplay}>
+              {this.state.stuckImage ?
+                <Image source={{ uri: currentSticker }} style={styles.imageSticker} />
+              : undefined}
+              <Image source={{ uri }} style={styles.imageMain} />
+            </View>
           </View>
-        </View>
-        <View style={styles.viewStickerSwiper}>
-          <Text style={styles.textStickerSwiper}>{this.state.textStickers.toUpperCase()}</Text>
-          <SwiperSelector stickers={this.state.stickers} onStickImage={this._onStickImage} />
-        </View>
-        <TouchableHighlight
-          style={styles.viewSaveButton}
-          activeOpacity={80}
-          underlayColor="steelblue"
-          onPress={this._onPressSave}
-        >
-          <Text style={styles.textButton}>{this.state.textSave.toUpperCase()}</Text>
-        </TouchableHighlight>
+          <View style={styles.viewStickerSwiper}>
+            <Text style={styles.textStickerSwiper}>{this.state.textStickers.toUpperCase()}</Text>
+            <SwiperSelector stickers={this.state.stickers} onStickImage={this._onStickImage} />
+          </View>
+          <TouchableHighlight
+            style={styles.viewSaveButton}
+            activeOpacity={80}
+            underlayColor="steelblue"
+            onPress={this._onPressSave}
+          >
+            <Text style={styles.textButton}>{this.state.textSave.toUpperCase()}</Text>
+          </TouchableHighlight>
+        </View>)}
       </View>
     );
   }

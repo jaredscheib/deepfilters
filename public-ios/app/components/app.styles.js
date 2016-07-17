@@ -1,6 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  viewLandingPage: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  imageLanding: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: 'black',
+    width: null,
+    height: null,
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
@@ -48,14 +60,14 @@ export default StyleSheet.create({
     color: 'white',
     textAlign: 'center',
   },
-  mainImage: {
+  imageMain: {
     borderWidth: 1,
     borderColor: 'black',
     flex: 1,
     width: null,
     height: null,
   },
-  stickerImage: {
+  imageSticker: {
     width: 100,
     height: 100,
     position: 'absolute',
