@@ -46,6 +46,7 @@ class deepfilters extends Component {
         },
       ],
       iSticker: 0,
+      stuckImage: false,
       savedImage: false,
       savedImagePath: '',
     };
@@ -57,7 +58,7 @@ class deepfilters extends Component {
   _onStickImage(i) {
     this.setState({
       iSticker: i,
-      savedImage: true,
+      stuckImage: true,
     });
   }
 
@@ -69,8 +70,8 @@ class deepfilters extends Component {
       // if (successfulWrite) {
         this.setState({
           savedImagePath: this.state,
-          savedImage: !this.state.savedImage,
-          textImage: 'You saved this magic',
+          savedImage: true,
+          textImage: 'You saved a ',
           textSave: 'Saved!',
         });
       // } else {
@@ -102,7 +103,7 @@ class deepfilters extends Component {
         <View style={styles.viewImagesComposerDisplay}>
           <Text style={styles.textImageDisplay}>{textImageDisplay.toUpperCase()}</Text>
           <View ref="image" style={styles.viewMainImageDisplay}>
-            {this.state.savedImage ?
+            {this.state.stuckImage ?
               <Image source={{ uri: currentSticker }} style={styles.stickerImage} />
             : undefined}
             <Image source={{ uri }} style={styles.mainImage} />
