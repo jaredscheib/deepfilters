@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {
   Image,
-  View,
+  TouchableHighlight,
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -11,7 +11,11 @@ class SwiperSelector extends Component {
     return (
       <Swiper showsButtons>
         {this.props.uris.map((uri, i) => (
-          <View key={`view-${i}`} style={{ alignItems: 'center', }}>
+          <TouchableHighlight
+            key={`view-${i}`}
+            style={{ alignItems: 'center', }}
+            onPress={() => this.props.onStickImage(i)}
+          >
             <Image
               key={`image-${i}`}
               source={{ uri }}
@@ -20,7 +24,7 @@ class SwiperSelector extends Component {
                 height: 120,
               }}
             />
-          </View>
+          </TouchableHighlight>
         ))}
       </Swiper>
     );
@@ -28,6 +32,7 @@ class SwiperSelector extends Component {
 }
 
 SwiperSelector.propTypes = {
+  onStickImage: PropTypes.func.isRequired,
   uris: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 

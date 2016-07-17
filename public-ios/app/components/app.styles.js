@@ -12,6 +12,7 @@ export default StyleSheet.create({
     backgroundColor: 'black',
     borderWidth: 1,
     borderColor: 'black',
+    // position: 'relative',
   },
   viewStickerSwiper: {
     flex: 2,
@@ -48,10 +49,11 @@ export default StyleSheet.create({
     width: null,
     height: null,
   },
-  secondImage: {
-    flex: 1,
-    width: null,
-    height: null,
+  stickerImage: {
+    width: 150,
+    height: 150,
     position: 'absolute',
+    left: 40,
+    top: 200,
   },
 });

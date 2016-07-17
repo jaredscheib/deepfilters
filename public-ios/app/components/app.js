@@ -9,8 +9,8 @@ import {
 
 import styles from './app.styles';
 
-import ViewSnapshotter from 'react-native-view-snapshot';
-import RNFS from 'react-native-fs';
+// import ViewSnapshotter from 'react-native-view-snapshot';
+// import RNFS from 'react-native-fs';
 import SwiperSelector from './swiper-selector/swiper-selector';
 
 class deepfilters extends Component {
@@ -30,56 +30,72 @@ class deepfilters extends Component {
         'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi4.jpg',
         'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi5.jpg',
       ],
+      iSticker: undefined,
       savedImage: false,
       savedImagePath: '',
     };
 
     this._onPressSave = this._onPressSave.bind(this);
+    this._onStickImage = this._onStickImage.bind(this);
   }
 
-  _onPressSave() {
-    const ref = React.findNodeHandle(this.refs.image);
-    const imagePath = this._imagePath();
-    // TODO overlay sticker before save snapshot
-    ViewSnapshotter.saveSnapshotToPath(ref, imagePath, (error, successfulWrite) => {
-      if (successfulWrite) {
-        this.setState({
-          savedImagePath: imagePath,
-          textImage: 'You saved this magic',
-          textSave: 'Saved!',
-        });
-      } else {
-        console.log(error);
-      }
+  _onStickImage(i) {
+    this.setState({
+      iSticker: i,
+      savedImage: true,
     });
   }
 
-  _imagePath() {
-    const x = new Date();
-    let month = x.getMonth();
-    month = month.length === 1 ? `0${month}` : month;
-    let date = x.getDate();
-    date = date.length === 1 ? `0${date}` : date;
-    const fullDate = `${x.getFullYear()}${month}${x}`;
-    const fullTime = `${x.toTimeString().substr(0, 8).replace(/:/gi, '')}`;
-    const uid = `${fullDate}${fullTime}`;
-    return `${RNFS.CachesDirectoryPath}/${uid}.png`;
+  _onPressSave() {
+    // const ref = React.findNodeHandle(this.refs.image);
+    // const imagePath = this._imagePath();
+    // TODO overlay sticker before save snapshot
+    // ViewSnapshotter.saveSnapshotToPath(ref, imagePath, (error, successfulWrite) => {
+      // if (successfulWrite) {
+        this.setState({
+          savedImagePath: this.state,
+          savedImage: !this.state.savedImage,
+          textImage: 'You saved this magic',
+          textSave: 'Saved!',
+        });
+      // } else {
+        // console.log(error);
+      // }
+    // });
   }
+
+  // _imagePath() {
+  //   const x = new Date();
+  //   let month = x.getMonth();
+  //   month = month.length === 1 ? `0${month}` : month;
+  //   let date = x.getDate();
+  //   date = date.length === 1 ? `0${date}` : date;
+  //   const fullDate = `${x.getFullYear()}${month}${x}`;
+  //   const fullTime = `${x.toTimeString().substr(0, 8).replace(/:/gi, '')}`;
+  //   const uid = `${fullDate}${fullTime}`;
+  //   return `${RNFS.CachesDirectoryPath}/${uid}.png`;
+  // }
 
   render() {
     const textImageDisplay = `${this.state.textImage}${this.state.textGuess}`;
-    const uri = !this.savedImage ? this.state.mainImageUri : this.state.savedImagePath;
+    const uri = this.state.mainImageUri;
+    console.log('uri!', uri);
+    const currentSticker = this.state.stickerImageUris[this.state.iSticker];
+    // const uri = !this.state.savedImage ? this.state.mainImageUri : this.state.savedImagePath;
     return (
       <View style={styles.container}>
         <View style={styles.viewImageDisplay}>
           <Text style={styles.textImageDisplay}>{textImageDisplay.toUpperCase()}</Text>
           <View ref="image">
+            {this.state.savedImage ?
+              <Image source={{ uri: currentSticker }} style={styles.stickerImage} />
+            : undefined}
             <Image source={{ uri }} style={styles.mainImage} />
           </View>
         </View>
         <View style={styles.viewStickerSwiper}>
           <Text style={styles.textStickerSwiper}>{this.state.textStickers.toUpperCase()}</Text>
-          <SwiperSelector uris={this.state.stickerImageUris} />
+          <SwiperSelector uris={this.state.stickerImageUris} onStickImage={this._onStickImage} />
         </View>
         <TouchableHighlight
           style={styles.viewSaveButton}
