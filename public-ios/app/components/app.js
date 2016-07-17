@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import styles from './app.styles';
 
+import FitImage from 'react-native-fit-image';
 import SwiperSelector from './swiper-selector/swiper-selector';
 
 class deepfilters extends Component {
@@ -19,26 +20,29 @@ class deepfilters extends Component {
         stickers: 'Add a sticker',
         save: 'Save!',
       },
-      urlsStickers: [
-        'corgi_url0',
-        'corgi_url1',
-        'corgi_url2',
-        'corgi_url3',
-        'corgi_url4',
+      mainImageUri: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
+      stickerImageUris: [
+        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
+        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi2.jpg',
+        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi3.jpg',
+        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi4.jpg',
+        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi5.jpg',
       ],
     };
   }
 
   render() {
     const { text } = this.state;
+    const uri = this.state.mainImageUri;
     return (
       <View style={styles.container}>
         <View style={styles.viewImageDisplay}>
           <Text style={styles.textHeader}>{`${text.image}${text.guess}`.toUpperCase()}</Text>
+          <FitImage source={{ uri }} style={styles.mainImage} />
         </View>
         <View style={styles.viewStickerSwiper}>
           <Text style={styles.textHeader}>{text.stickers.toUpperCase()}</Text>
-          <SwiperSelector uris={this.state.urlsStickers} />
+          <SwiperSelector uris={this.state.stickerImageUris} />
         </View>
         <View style={styles.viewSaveButton}>
           <Text style={styles.textButton}>{text.save.toUpperCase()}</Text>

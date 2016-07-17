@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {
   Image,
-  Text,
   View,
 } from 'react-native';
 
@@ -12,9 +11,15 @@ class SwiperSelector extends Component {
     return (
       <Swiper showsButtons>
         {this.props.uris.map((uri, i) => (
-          <View key={`view-${i}`}>
-            <Text key={`text-${i}`}>{uri}</Text>
-            <Image key={`image-${i}`} source={{ uri }} style={{ width: 150, height: 150 }} />
+          <View key={`view-${i}`} style={{ alignItems: 'center' }}>
+            <Image
+              key={`image-${i}`}
+              source={{ uri }}
+              style={{
+                width: 120,
+                height: 120,
+              }}
+            />
           </View>
         ))}
       </Swiper>

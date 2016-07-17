@@ -6,23 +6,30 @@ export default StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   viewImageDisplay: {
-    flex: 3,
-    backgroundColor: 'steelblue',
+    flex: 5,
+    backgroundColor: 'black',
   },
   viewStickerSwiper: {
     flex: 2,
-    backgroundColor: 'skyblue',
+    backgroundColor: '#a1a1a1',
   },
   viewSaveButton: {
     flex: 1,
-    backgroundColor: 'powderblue',
+    backgroundColor: 'red',
   },
   textHeader: {
     fontSize: 26,
+    color: 'white',
     textAlign: 'center',
+    padding: 3,
   },
   textButton: {
     fontSize: 22,
+    color: 'white',
     textAlign: 'center',
+  },
+  mainImage: {
+    borderWidth: 1,
+    borderColor: 'black',
   },
 });
