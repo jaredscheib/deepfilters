@@ -1,0 +1,3 @@
+rootProject.name = 'deepfilters'
+
+include ':app'
