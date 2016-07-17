@@ -22,15 +22,30 @@ class deepfilters extends Component {
       textGuess: 'dog',
       textStickers: 'Swipe to add a sticker',
       textSave: 'Save',
-      mainImageUri: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
-      stickerImageUris: [
-        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
-        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi2.jpg',
-        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi3.jpg',
-        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi4.jpg',
-        'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi5.jpg',
+      mainImage: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/batman.jpg',
+      stickers: [
+        {
+          orig: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
+          styled: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/style1/corgi1.png'
+        },
+        {
+          orig: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi2.jpg',
+          styled: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/style2/corgi2.png',
+        },
+        {
+          orig: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi3.jpg',
+          styled: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/style3/corgi3.png',
+        },
+        {
+          orig: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi4.jpg',
+          styled: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/style4/corgi4.png',
+        },
+        {
+          orig: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi5.jpg',
+          styled: 'https://s3-us-west-1.amazonaws.com/filtersimg/deepout/style5/corgi5.png',
+        },
       ],
-      iSticker: undefined,
+      iSticker: 0,
       savedImage: false,
       savedImagePath: '',
     };
@@ -78,10 +93,10 @@ class deepfilters extends Component {
 
   render() {
     const textImageDisplay = `${this.state.textImage}${this.state.textGuess}`;
-    const uri = this.state.mainImageUri;
+    const uri = this.state.mainImage;
     console.log('uri!', uri);
-    const currentSticker = this.state.stickerImageUris[this.state.iSticker];
-    // const uri = !this.state.savedImage ? this.state.mainImageUri : this.state.savedImagePath;
+    const currentSticker = this.state.stickers[this.state.iSticker].styled;
+    // const uri = !this.state.savedImage ? this.state.mainImage : this.state.savedImagePath;
     return (
       <View style={styles.container}>
         <View style={styles.viewImagesComposerDisplay}>
@@ -95,7 +110,7 @@ class deepfilters extends Component {
         </View>
         <View style={styles.viewStickerSwiper}>
           <Text style={styles.textStickerSwiper}>{this.state.textStickers.toUpperCase()}</Text>
-          <SwiperSelector uris={this.state.stickerImageUris} onStickImage={this._onStickImage} />
+          <SwiperSelector stickers={this.state.stickers} onStickImage={this._onStickImage} />
         </View>
         <TouchableHighlight
           style={styles.viewSaveButton}

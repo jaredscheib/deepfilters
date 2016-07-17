@@ -55,11 +55,11 @@ export default StyleSheet.create({
     height: null,
   },
   stickerImage: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     position: 'absolute',
     zIndex: 1,
-    left: 40,
-    top: 200,
+    left: 20,
+    top: 250,
   },
 });
