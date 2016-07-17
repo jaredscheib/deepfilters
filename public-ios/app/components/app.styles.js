@@ -24,14 +24,20 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: 'red',
   },
-  textHeader: {
+  textImageDisplay: {
+    fontSize: 36,
+    color: 'white',
+    textAlign: 'center',
+    padding: 3,
+  },
+  textStickerSwiper: {
     fontSize: 26,
     color: 'white',
     textAlign: 'center',
     padding: 3,
   },
   textButton: {
-    fontSize: 22,
+    fontSize: 31,
     color: 'white',
     textAlign: 'center',
   },

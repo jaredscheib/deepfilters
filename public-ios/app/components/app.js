@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Image,
   Text,
+  TouchableHighlight,
   View,
 } from 'react-native';
 import styles from './app.styles';
@@ -14,12 +15,10 @@ class deepfilters extends Component {
     super(props);
 
     this.state = {
-      text: {
-        image: 'You found a ',
-        guess: 'dog',
-        stickers: 'Swipe to add a sticker',
-        save: 'Save!',
-      },
+      textImage: 'You found a ',
+      textGuess: 'dog',
+      textStickers: 'Swipe to add a sticker',
+      textSave: 'Save',
       mainImageUri: 'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
       stickerImageUris: [
         'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi1.jpg',
@@ -29,24 +28,35 @@ class deepfilters extends Component {
         'https://s3-us-west-1.amazonaws.com/filtersimg/places/corgi/corgi5.jpg',
       ],
     };
+
+    this._onPressSave = this._onPressSave.bind(this);
+  }
+
+  _onPressSave() {
+    // react native view snapshot
   }
 
   render() {
-    const { text } = this.state;
+    const textImageDisplay = `${this.state.textImage}${this.state.textGuess}`;
     const uri = this.state.mainImageUri;
     return (
       <View style={styles.container}>
         <View style={styles.viewImageDisplay}>
-          <Text style={styles.textHeader}>{`${text.image}${text.guess}`.toUpperCase()}</Text>
+          <Text style={styles.textImageDisplay}>{textImageDisplay.toUpperCase()}</Text>
           <Image source={{ uri }} style={styles.mainImage} />
         </View>
         <View style={styles.viewStickerSwiper}>
-          <Text style={styles.textHeader}>{text.stickers.toUpperCase()}</Text>
+          <Text style={styles.textStickerSwiper}>{this.state.textStickers.toUpperCase()}</Text>
           <SwiperSelector uris={this.state.stickerImageUris} />
         </View>
-        <View style={styles.viewSaveButton}>
-          <Text style={styles.textButton}>{text.save.toUpperCase()}</Text>
-        </View>
+        <TouchableHighlight
+          style={styles.viewSaveButton}
+          activeOpacity={80}
+          underlayColor="steelblue"
+          onPress={this._onPressSave}
+        >
+          <Text style={styles.textButton}>{this.state.textSave.toUpperCase()}</Text>
+        </TouchableHighlight>
       </View>
     );
   }
